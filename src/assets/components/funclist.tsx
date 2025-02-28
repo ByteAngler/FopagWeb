@@ -1,6 +1,5 @@
 import { FaClipboardUser } from "react-icons/fa6";
 import { useDispatch, useSelector } from "react-redux";
-import rootReducer from "../../redux/root-reducer";
 
 import { fetchEmployeers } from "../../redux/employeeList/slice";
 import { RootState } from "../../redux/store";
@@ -14,7 +13,6 @@ export default function Funclist(){
     },[dispatch]);
 
     const {employeersList} = useSelector((state: RootState)=> state.employeers)
-    console.log(employeersList);
     return(
         <>
             <div className="h-full bg-white w-full rounded-md flex flex-col items-center py-10 pe-0.5">
