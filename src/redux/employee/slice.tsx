@@ -30,7 +30,9 @@ const initialState = {
 const employeeDetailSlice = createSlice({
   name: "employeeDetail",
   initialState: initialState,
-  reducers: {},
+  reducers: {
+    resetState:() => initialState,
+  },
   extraReducers(builder) {
       builder
         .addCase(fetchDetails.pending, (state)=>{
@@ -56,4 +58,5 @@ const employeeDetailSlice = createSlice({
   },
 });
 
+export const {resetState} = employeeDetailSlice.actions
 export default employeeDetailSlice.reducer;

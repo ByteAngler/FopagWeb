@@ -4,7 +4,6 @@ import { RootState } from "../../redux/store";
 
 export default function Resume(){
     const {AnalisedEmployeersNumber, BaseEmployeersNumber, inconsistencies, difValor} = useSelector((state: RootState)=> state.resume)
-    console.log(BaseEmployeersNumber)
     return(
         <>
             <div className="bg-white rounded-md shadow-md p-6 space-y-2 font-semibold flex text-lg text-nowrap">

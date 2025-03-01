@@ -15,11 +15,11 @@ export default function Sidebar(){
                     </div>
                     <div>
                         <nav>
-                            <ul className="space-y-10">
-                                <li><FaChartBar size={40}/></li>
-                                <li><FaFileInvoice size={40}/></li>
-                                <li><FaFileInvoice size={40}/></li>
-                                <li><FaUsers size={40}/></li>
+                            <ul className="space-y-10 font-extrabold w-full">
+                                <li className="text-blue-700 uppercase w-full flex space-x-5 items-center"><FaChartBar size={40}/><p>Relatório</p></li>
+                                <li className="opacity-50 w-full flex space-x-5 items-center"><FaFileInvoice size={40}/><p>Folha Referência</p></li>
+                                <li className="opacity-50 w-full flex space-x-5 items-center"><FaFileInvoice size={40}/><p>Folha em Análise</p></li>
+                                <li className="opacity-50 w-full flex space-x-5 items-center"><FaUsers size={40}/><p>Servidores</p></li>
                             </ul>
                         </nav>
                     </div>

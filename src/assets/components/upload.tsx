@@ -1,8 +1,9 @@
 import { useState } from "react"
 import { useDispatch, useSelector } from "react-redux";
-import { fetchUpload } from "../../redux/analiseResume/slice";
+import { fetchUpload, restartState } from "../../redux/analiseResume/slice";
 import { RootState } from "../../redux/store";
 import { AiOutlineLoading3Quarters } from "react-icons/ai";
+import { resetState } from "../../redux/employee/slice";
 export default function Uploadcontent() {
 
     const [file, setFile] = useState<File | null>(null);
@@ -18,6 +19,8 @@ export default function Uploadcontent() {
             alert("Selecione um arquivo antes de iniciar a análise");
             return;
         }
+        dispatch(resetState())
+        dispatch(restartState())
         dispatch(fetchUpload(file) as any);
     };
 

@@ -7,14 +7,13 @@ import { useEffect, useRef, useState } from "react";
 import { fetchDetails } from "../../redux/employee/slice";
 
 export default function Funclist(){
-
+    const [searchTerm, setSearchTerm] = useState(""); // Estado para pesquisa
     const [selected, setSelected] = useState('')
     const handleChangeEmployeer = (nome: string) => {
         setSelected(nome);
         dispatch(fetchDetails(nome) as any);
     };
     const {processed} = useSelector((state: RootState)=> state.resume)
-    console.log(processed)
     const dispatch = useDispatch()
     const isMonted = useRef(false);
     useEffect(()=>{
@@ -29,13 +28,24 @@ export default function Funclist(){
     },[processed]);
 
     const employeersList = useSelector((state: RootState)=> state.employeers.employeersList as Record<string, number[]>)
-    console.log(employeersList)
+    const filteredEmployers = Object.entries(employeersList).filter(([nome]) =>
+        nome.toLowerCase().includes(searchTerm.toLowerCase())
+      );
     return(
         <>
             <div className="h-full bg-white w-full rounded-md flex flex-col items-center py-10 pe-0.5">
-                <p className="font-bold text-xl border-b border-gray-300 w-full text-center pb-4">Funcionários Cadastrados</p>
+                <div className="border-b w-full flex flex-col items-center">
+                    <p className="font-bold text-xl  border-gray-300 w-full text-center pb-4">Funcionários Cadastrados</p>
+                    <input
+                        type="text"
+                        placeholder="Buscar funcionário..."
+                        value={searchTerm}
+                        onChange={(e) => setSearchTerm(e.target.value)}
+                        className=" p-2 border rounded-md w-[80%] mb-4"
+                    />
+                </div>
                 <div className="overflow-y-auto">
-                {Object.entries(employeersList).map(([nome, salarios], index) => (
+                {filteredEmployers.map(([nome, salarios], index) => (
                         <div
                         key={index}
                         className={`flex items-center border-y border-gray-300 w-full py-5 space-x-1 ps-2 cursor-pointer hover:border-blue-500 ${selected===nome?'bg-slate-200 rounded-e-4xl text-blue-600':null}`}

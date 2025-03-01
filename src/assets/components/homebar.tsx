@@ -9,12 +9,12 @@ export default function Homebar(){
             <nav className="h-full flex items-center justify-center">
                 <ul className="flex space-x-10 text-xl font-bold text-lime-700">
                     <li className="text-blue-700">SEMED</li>
-                    <li>SEPAF</li>
-                    <li>SECTEL</li>
-                    <li>SEMISP</li>
-                    <li>SEMAS</li>
-                    <li>SEPADES</li>
-                    <li>SEMSA</li>
+                    <li className="opacity-40 cursor-default">SEPAF</li>
+                    <li className="opacity-40 cursor-default">SECTEL</li>
+                    <li className="opacity-40 cursor-default">SEMISP</li>
+                    <li className="opacity-40 cursor-default">SEMAS</li>
+                    <li className="opacity-40 cursor-default">SEPADES</li>
+                    <li className="opacity-40 cursor-default">SEMSA</li>
                 </ul>
             </nav>
         </div>

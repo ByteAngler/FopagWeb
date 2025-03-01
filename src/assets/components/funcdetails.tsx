@@ -3,10 +3,9 @@ import { useSelector } from "react-redux";
 import { RootState } from "../../redux/store";
 export default function Funcdetails(){
     const employeeDetails = useSelector((state: RootState)=>state.employeerDetails)
-    console.log(employeeDetails)
     return(
         <>
-            <div className=" w-full bg-white py-8 px-2 flex flex-col items-center space-y-8 rounded-lg shadow-lg">
+            <div className=" w-full h-[95%] bg-white py-8 px-2 flex flex-col items-center space-y-8 rounded-lg shadow-lg">
                 <div className="flex flex-col items-center space-y-5">
                     <FaUser className="size-20"/>
                     <p className="font-bold text-2xl text-center h-18">{employeeDetails.nome}</p>
@@ -48,14 +47,14 @@ export default function Funcdetails(){
                         </div>
                     </div>
                 </div>
-                <div className="w-full flex flex-col items-center space-y-5">
+                <div className="w-full flex flex-col items-center space-y-5 max-h-[40%] min-h-[40%]">
                     <p className="uppercase">detalhes adicionais</p>
-                    <div className="flex text-sm space-x-5">
+                    <div className="flex text-sm space-x-5 overflow-y-auto max-h-[60%]">
                         <div>
                             <ul>
                                 <li className="font-bold">REFERENCIA</li>
                                 {employeeDetails.baseBlock.map((line, index)=>(
-                                    <li key={index}>{line}</li>
+                                    <li className="border border-gray-400 p-1 font-semibold" key={index}>{line}</li>
                                 ))}
                             </ul>
                         </div>
@@ -63,7 +62,7 @@ export default function Funcdetails(){
                             <ul>
                                 <li className="font-bold">ENCONTRADO</li>
                                 {employeeDetails.analisedBlock.map((line, index)=>(
-                                    <li key={index}>{line}</li>
+                                    <li className="border border-gray-400 p-1 font-semibold" key={index}>{line}</li>
                                 ))}
                             </ul>
                         </div>

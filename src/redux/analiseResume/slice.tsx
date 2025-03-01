@@ -19,7 +19,11 @@ export const fetchUpload = createAsyncThunk("upload/fetch", async (file:File) =>
 const analiseResumeSlice = createSlice({
   name: "analiseResume",
   initialState: { processed:false, AnalisedEmployeersNumber:0, BaseEmployeersNumber:0, inconsistencies:0, difValor:0, loading:false, error:false },
-  reducers: {},
+  reducers: {
+    restartState:(state)=>{
+        state.processed = false;
+    }
+  },
   extraReducers(builder) {
       builder
         .addCase(fetchUpload.pending, (state)=>{
@@ -41,4 +45,5 @@ const analiseResumeSlice = createSlice({
   },
 });
 
+export const {restartState} = analiseResumeSlice.actions
 export default analiseResumeSlice.reducer;
