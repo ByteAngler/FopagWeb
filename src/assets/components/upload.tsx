@@ -5,10 +5,12 @@ import { RootState } from "../../redux/store";
 import { AiOutlineLoading3Quarters } from "react-icons/ai";
 export default function Uploadcontent() {
 
-    const [file, setFile] = useState(null);
+    const [file, setFile] = useState<File | null>(null);
     const dispatch = useDispatch()
-    const handleFileChange = (event) => {
-        setFile(event.target.files[0]);
+    const handleFileChange = (event:React.ChangeEvent<HTMLInputElement>) => {
+        if (event.target.files && event.target.files.length > 0) {
+            setFile(event.target.files[0]); // Obtém o primeiro arquivo selecionado
+          }
     }
 
     const handleUpload = () => {
@@ -16,7 +18,7 @@ export default function Uploadcontent() {
             alert("Selecione um arquivo antes de iniciar a análise");
             return;
         }
-        dispatch(fetchUpload(file));
+        dispatch(fetchUpload(file) as any);
     };
 
     const { loading } = useSelector(((state: RootState) => state.resume))
@@ -37,7 +39,7 @@ export default function Uploadcontent() {
                     className="hidden"
                     onChange={handleFileChange}
                 />
-                <button onClick={handleUpload} className="p-2 bg-amber-400 rounded-lg cursor-pointer hover:scale-105 transition-all shadow-md font-bold text-lg">
+                <button onClick={handleUpload} disabled={loading} className={`p-2 bg-amber-400 rounded-lg  transition-all shadow-md font-bold text-lg ${loading?'opacity-70':'hover:scale-105 cursor-pointer'}`}>
                     {loading ? (
                         <div className="flex items-center justify-center">
                             <AiOutlineLoading3Quarters className="animate-spin mr-2" /> Analisando...

@@ -1,10 +1,12 @@
 import { configureStore } from "@reduxjs/toolkit";
 import employeersSlice from "./employeeList/slice";
 import analiseResume from "./analiseResume/slice";
+import employeerDetails from "./employee/slice";
 const store = configureStore({
     reducer: {
         employeers: employeersSlice,
-        resume: analiseResume
+        resume: analiseResume,
+        employeerDetails: employeerDetails,
     },
 });
 

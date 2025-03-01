@@ -1,4 +1,10 @@
+import { useSelector } from "react-redux";
+import { RootState } from "../../redux/store";
+
+
 export default function Resume(){
+    const {AnalisedEmployeersNumber, BaseEmployeersNumber, inconsistencies, difValor} = useSelector((state: RootState)=> state.resume)
+    console.log(BaseEmployeersNumber)
     return(
         <>
             <div className="bg-white rounded-md shadow-md p-6 space-y-2 font-semibold flex text-lg text-nowrap">
@@ -9,10 +15,10 @@ export default function Resume(){
                     <p className="text-amber-500">Diferença Gasta esses funcionários</p>
                 </div>
                 <div className="space-y-4 px-2 font-bold">
-                    <p>1285</p>
-                    <p>1290</p>
-                    <p className="text-red-500">399</p>
-                    <p className="text-amber-500">R$ 43.233,45</p>
+                    <p>{BaseEmployeersNumber}</p>
+                    <p>{AnalisedEmployeersNumber}</p>
+                    <p className="text-red-500">{inconsistencies}</p>
+                    <p className="text-amber-500">R$ {difValor}</p>
                 </div>
             </div>
         </>

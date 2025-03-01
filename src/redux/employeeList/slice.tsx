@@ -20,7 +20,7 @@ const employeersSlice = createSlice({
         })
         .addCase(fetchEmployeers.fulfilled, (state, action) => {
             state.loading = false;
-            state.employeersList = action.payload;
+            state.employeersList = action.payload as Record<string, number[]>;
         })
         .addCase(fetchEmployeers.rejected, (state)=>{
             state.loading = false;

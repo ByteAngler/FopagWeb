@@ -1,7 +1,7 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 
 // 🔹 Criando a Action Assíncrona para buscar funcionários
-export const fetchUpload = createAsyncThunk("upload/fetch", async (file) => {
+export const fetchUpload = createAsyncThunk("upload/fetch", async (file:File) => {
     const formData = new FormData();
     formData.append("file", file); // 🔹 Adiciona o arquivo ao FormData
   
@@ -18,7 +18,7 @@ export const fetchUpload = createAsyncThunk("upload/fetch", async (file) => {
 // 🔹 Criando o Slice do Redux
 const analiseResumeSlice = createSlice({
   name: "analiseResume",
-  initialState: { processed:false, employeersNumber:0, loading:false, error:false },
+  initialState: { processed:false, AnalisedEmployeersNumber:0, BaseEmployeersNumber:0, inconsistencies:0, difValor:0, loading:false, error:false },
   reducers: {},
   extraReducers(builder) {
       builder
@@ -29,7 +29,10 @@ const analiseResumeSlice = createSlice({
         .addCase(fetchUpload.fulfilled, (state, action) => {
             state.loading = false;
             state.processed = true;
-            state.employeersNumber = action.payload['total_funcionarios']
+            state.AnalisedEmployeersNumber = action.payload['total_funcionarios_analisados']
+            state.BaseEmployeersNumber = action.payload['total_funcionarios_base']
+            state.inconsistencies = action.payload['inconsistencias']
+            state.difValor = action.payload['total_diferença']
         })
         .addCase(fetchUpload.rejected, (state)=>{
             state.loading = false;
