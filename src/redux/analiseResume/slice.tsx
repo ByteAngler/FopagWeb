@@ -1,12 +1,16 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
-
+import { RootState } from "../store";
 // 🔹 Criando a Action Assíncrona para buscar funcionários
-export const fetchUpload = createAsyncThunk("upload/fetch", async (file:File) => {
+export const fetchUpload = createAsyncThunk("upload/fetch", async (file:File, {getState}) => {
+    const state = getState() as RootState
+    const token = state.user.token
     const formData = new FormData();
     formData.append("file", file); // 🔹 Adiciona o arquivo ao FormData
-  
     const response = await fetch("http://127.0.0.1:8000/upload/", {
       method: "POST",
+      headers: {
+        Authorization:`Bearer ${token}`,
+      },
       body: formData,
     });
   
