@@ -5,7 +5,7 @@ import handleAuthError from "../services/fetchAuth";
 export const fetchEmployeers = createAsyncThunk("employeers/fetch", async (_, {getState,dispatch}) => {
   const state = getState() as RootState
   const token = state.user.token
-  const response = await fetch("http://127.0.0.1:8000/employeers/",{
+  const response = await fetch("https://fopagscanapi-production.up.railway.app/employeers/",{
     method: "GET",
     headers: {
         Authorization:`Bearer ${token}`,

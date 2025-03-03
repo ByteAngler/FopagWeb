@@ -6,7 +6,7 @@ export const fetchDetails = createAsyncThunk("employee/fetch", async (name:strin
 
     const state = getState() as RootState;
     const token  = state.user.token
-    const response = await fetch(`http://127.0.0.1:8000/details/?nome=${name}`,{
+    const response = await fetch(`https://fopagscanapi-production.up.railway.app/details/?nome=${name}`,{
         method: "GET",
         headers: {
             Authorization:`Bearer ${token}`,

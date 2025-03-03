@@ -7,7 +7,7 @@ export const fetchUpload = createAsyncThunk("upload/fetch", async (file:File, {g
     const token = state.user.token
     const formData = new FormData();
     formData.append("file", file); // 🔹 Adiciona o arquivo ao FormData
-    const response = await fetch("http://127.0.0.1:8000/upload/", {
+    const response = await fetch("https://fopagscanapi-production.up.railway.app/upload/", {
       method: "POST",
       headers: {
         Authorization:`Bearer ${token}`,
