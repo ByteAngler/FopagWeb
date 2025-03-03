@@ -1,7 +1,8 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import { RootState } from "../store";
+import handleAuthError from "../services/fetchAuth";
 // 🔹 Criando a Action Assíncrona para buscar funcionários
-export const fetchEmployeers = createAsyncThunk("employeers/fetch", async (_, {getState}) => {
+export const fetchEmployeers = createAsyncThunk("employeers/fetch", async (_, {getState,dispatch}) => {
   const state = getState() as RootState
   const token = state.user.token
   const response = await fetch("http://127.0.0.1:8000/employeers/",{
@@ -11,6 +12,7 @@ export const fetchEmployeers = createAsyncThunk("employeers/fetch", async (_, {g
     }
   });
   const data = await response.json();
+  handleAuthError(response,dispatch);
   return data;
 });
 

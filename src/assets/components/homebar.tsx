@@ -1,7 +1,10 @@
-import { useDispatch } from "react-redux"
-import {logout} from "../../redux/user/slice"
+import { useDispatch, useSelector } from "react-redux";
+import {logout} from "../../redux/user/slice";
 import { IoLogOutOutline } from "react-icons/io5";
+import { RootState } from "../../redux/store";
 export default function Homebar(){
+    const {username} = useSelector((state:RootState)=>state.user)
+    console.log(username)
     const dispatch = useDispatch()
     const handleLogout = () =>{
         dispatch(logout())
@@ -23,7 +26,10 @@ export default function Homebar(){
                     <li className="opacity-40 cursor-default">SEPADES</li>
                     <li className="opacity-40 cursor-default">SEMSA</li>
                 </ul>
-                <button onClick={handleLogout} className="text-white cursor-pointer hover:scale-110 bg-orange-700 p-2 px-3 rounded-md shadow-md font-bold text-xl flex items-center space-x-2"><p>SAIR</p><IoLogOutOutline size={30}/></button>
+                <div>
+                    <button onClick={handleLogout} className="text-white cursor-pointer hover:scale-110 bg-orange-700 p-2 px-3 rounded-md shadow-md font-bold text-xl flex items-center space-x-2"><p>SAIR</p><IoLogOutOutline size={30}/></button>
+                    <p>Usuário: {username}</p>
+                </div>
             </nav>
         </div>
         </>

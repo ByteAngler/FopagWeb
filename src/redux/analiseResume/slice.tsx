@@ -1,7 +1,8 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import { RootState } from "../store";
+import handleAuthError from "../services/fetchAuth";
 // 🔹 Criando a Action Assíncrona para buscar funcionários
-export const fetchUpload = createAsyncThunk("upload/fetch", async (file:File, {getState}) => {
+export const fetchUpload = createAsyncThunk("upload/fetch", async (file:File, {getState,dispatch}) => {
     const state = getState() as RootState
     const token = state.user.token
     const formData = new FormData();
@@ -15,6 +16,7 @@ export const fetchUpload = createAsyncThunk("upload/fetch", async (file:File, {g
     });
   
     const data = await response.json();
+    handleAuthError(response,dispatch);
     return data;
   });
   
