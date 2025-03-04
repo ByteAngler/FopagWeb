@@ -24,7 +24,7 @@ export const fetchUpload = createAsyncThunk("upload/fetch", async (file:File, {g
 // 🔹 Criando o Slice do Redux
 const analiseResumeSlice = createSlice({
   name: "analiseResume",
-  initialState: { processed:false, AnalisedEmployeersNumber:0, BaseEmployeersNumber:0, inconsistencies:0, difValor:0, loading:false, error:false },
+  initialState: { processed:false, AnalisedEmployeersNumber:0, BaseEmployeersNumber:0, newest:0, out:0, inconsistencies:0, difValor:0, loading:false, error:false },
   reducers: {
     restartState:(state)=>{
         state.processed = false;
@@ -41,6 +41,8 @@ const analiseResumeSlice = createSlice({
             state.processed = true;
             state.AnalisedEmployeersNumber = action.payload['total_funcionarios_analisados']
             state.BaseEmployeersNumber = action.payload['total_funcionarios_base']
+            state.newest = action.payload['novos']
+            state.out = action.payload['saida']
             state.inconsistencies = action.payload['inconsistencias']
             state.difValor = action.payload['total_diferença']
         })

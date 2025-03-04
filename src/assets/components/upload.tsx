@@ -31,7 +31,7 @@ export default function Uploadcontent() {
             <div className="flex flex-col justify-center items-center space-y-4">
                 <label
                     htmlFor="file-upload"
-                    className="flex items-center justify-center border-2 border-dashed border-white rounded-lg p-4 text-blue-800 font-semibold hover:bg-green-100 cursor-pointer"
+                    className="flex items-center justify-center border-2 border-dashed border-white rounded-lg p-[0.6vw] text-[0.8vw] text-blue-800 font-semibold hover:bg-green-100 cursor-pointer"
                 >
                     {file ? (<span>{file.name}</span>) : (<span>Selecione um arquivo</span>)}
                 </label>
@@ -42,7 +42,7 @@ export default function Uploadcontent() {
                     className="hidden"
                     onChange={handleFileChange}
                 />
-                <button onClick={handleUpload} disabled={loading} className={`p-2 bg-amber-400 rounded-lg  transition-all shadow-md font-bold text-lg ${loading?'opacity-70':'hover:scale-105 cursor-pointer'}`}>
+                <button onClick={handleUpload} disabled={loading} className={`p-2 bg-amber-400 rounded-lg  transition-all shadow-md font-bold text-[1vw] ${loading?'opacity-70':'hover:scale-105 cursor-pointer'}`}>
                     {loading ? (
                         <div className="flex items-center justify-center">
                             <AiOutlineLoading3Quarters className="animate-spin mr-2" /> Analisando...

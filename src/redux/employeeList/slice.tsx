@@ -19,7 +19,7 @@ export const fetchEmployeers = createAsyncThunk("employeers/fetch", async (_, {g
 // 🔹 Criando o Slice do Redux
 const employeersSlice = createSlice({
   name: "employeers",
-  initialState: { employeersList: {}, loading: false, error: false },
+  initialState: { employeersList: {}, newEmployeers:{}, outEmployeers:{}, baseEmployeers:{}, analizedEmployeers:{}, loading: false, error: false },
   reducers: {},
   extraReducers(builder) {
       builder
@@ -29,7 +29,11 @@ const employeersSlice = createSlice({
         })
         .addCase(fetchEmployeers.fulfilled, (state, action) => {
             state.loading = false;
-            state.employeersList = action.payload as Record<string, number[]>;
+            state.employeersList = action.payload['inconsistentes'] as Record<string, number[]>;
+            state.newEmployeers = action.payload['novos'] as Record<string, number[]>;
+            state.outEmployeers = action.payload['saida'] as Record<string, number[]>;
+            state.baseEmployeers = action.payload['base'] as Record<string, number[]>;
+            state.analizedEmployeers = action.payload['analise'] as Record<string, number[]>;
         })
         .addCase(fetchEmployeers.rejected, (state)=>{
             state.loading = false;

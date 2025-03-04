@@ -4,7 +4,6 @@ import { IoLogOutOutline } from "react-icons/io5";
 import { RootState } from "../../redux/store";
 export default function Homebar(){
     const {username} = useSelector((state:RootState)=>state.user)
-    console.log(username)
     const dispatch = useDispatch()
     const handleLogout = () =>{
         dispatch(logout())
@@ -17,7 +16,7 @@ export default function Homebar(){
                 <p className="relative w-fit font-extrabold text-2xl text-center align-middle flex items-center">FOPAG<span className="absolute left-12 bottom-2 font-normal">scan</span></p>
             </div>
             <nav className="h-full flex items-center justify-center space-x-20">
-                <ul className="flex space-x-10 text-xl font-bold text-lime-700">
+                <ul className="flex space-x-[1.2vw] text-[1.2vw] font-bold text-lime-700">
                     <li className="text-blue-700">SEMED</li>
                     <li className="opacity-40 cursor-default">SEPAF</li>
                     <li className="opacity-40 cursor-default">SECTEL</li>
@@ -27,8 +26,8 @@ export default function Homebar(){
                     <li className="opacity-40 cursor-default">SEMSA</li>
                 </ul>
                 <div>
-                    <button onClick={handleLogout} className="text-white cursor-pointer hover:scale-110 bg-orange-700 p-2 px-3 rounded-md shadow-md font-bold text-xl flex items-center space-x-2"><p>SAIR</p><IoLogOutOutline size={30}/></button>
-                    <p>Usuário: {username}</p>
+                    <button onClick={handleLogout} className="text-white cursor-pointer hover:scale-110 bg-orange-700 p-2 px-3 rounded-md shadow-md font-bold text-[1vw] flex items-center space-x-2"><p>SAIR</p><IoLogOutOutline size={30}/></button>
+                    <p className="text-nowrap">Usuário: {username}</p>
                 </div>
             </nav>
         </div>

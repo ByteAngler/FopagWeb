@@ -32,7 +32,7 @@ export default function LoginScreen(){
                     <input type="text" name="" value={username} onChange={(e)=> setUsername(e.target.value)} id="" className="bg-white  rounded-lg h-[2rem] shadow-md p-1 ps-5" placeholder="Usuário"/>
                     <input type="password" name="" value={password} onChange={(e)=> setPassword(e.target.value)} id="" className="bg-white rounded-lg h-[2rem] shadow-md p-1 ps-5" placeholder="Senha"/>
                 </div>
-                <button className="uppercase bg-green-500 p-2 font-bold rounded-2xl w-[20%] shadow-md" onClick={handleLogin}>Login</button>
+                <button className="uppercase bg-green-500 p-2 font-bold rounded-2xl w-[20%] shadow-md hover:scale-110 transition-all cursor-pointer" onClick={handleLogin}>Login</button>
             </div>
         </div>
         </>
