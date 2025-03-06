@@ -5,10 +5,10 @@ export default function Funcdetails(){
     const employeeDetails = useSelector((state: RootState)=>state.employeerDetails)
     return(
         <>
-            <div className="w-full h-11/12 bg-white py-8 px-2 flex flex-col items-center space-y-8 rounded-lg shadow-lg">
+            <div className="w-full grow md:max-h-7/8 xl:max-h-11/12 bg-white py-8 px-2 flex flex-col items-center space-y-8 rounded-lg shadow-lg">
                 <div className="flex flex-col items-center space-y-5">
-                    <FaUser className="2xl:size-20 sm:size-16"/>
-                    <p className="font-bold 2xl:text-2xl sm:text-xl text-center">{employeeDetails.nome}</p>
+                    <FaUser className="size-[4vw]"/>
+                    <p className="font-bold text-[1vw] text-center">{employeeDetails.nome}</p>
                 </div>
                 <div className="flex w-8/12 justify-around font-bold text-[1vw] border-dashed border-slate-400 border-y rounded-md">
                     <div className="flex flex-col items-center text-center w-1/2">
@@ -47,14 +47,14 @@ export default function Funcdetails(){
                         </div>
                     </div>
                 </div>
-                <div className="w-full flex flex-col items-center space-y-5 max-h-[40%] ">
-                    <p className="uppercase">detalhes adicionais</p>
-                    <div className="flex text-sm space-x-5 overflow-y-auto max-h-[60%]">
+                <div className="w-full flex flex-col items-center space-y-5 overflow-auto grow">
+                    <p className="uppercase text-[1vw]">detalhes adicionais</p>
+                    <div className="flex text-[0.9vw] space-x-[1vw] overflow-y-auto max-h-[50%]">
                         <div>
                             <ul>
                                 <li className="font-bold">REFERENCIA</li>
                                 {employeeDetails.baseBlock.map((line, index)=>(
-                                    <li className="border border-gray-400 p-1 font-semibold" key={index}>{line}</li>
+                                    <li className="border border-gray-400 p-1 text-[0.8vw] font-semibold" key={index}>{line}</li>
                                 ))}
                             </ul>
                         </div>
@@ -62,7 +62,7 @@ export default function Funcdetails(){
                             <ul>
                                 <li className="font-bold">ENCONTRADO</li>
                                 {employeeDetails.analisedBlock.map((line, index)=>(
-                                    <li className="border border-gray-400 p-1 font-semibold" key={index}>{line}</li>
+                                    <li className="border border-gray-400 p-1 text-[0.8vw] font-semibold" key={index}>{line}</li>
                                 ))}
                             </ul>
                         </div>

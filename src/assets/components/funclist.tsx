@@ -74,11 +74,11 @@ export default function Funclist(){
                 {filteredEmployers.map(([nome, salarios] , index) => (
                         <div
                         key={index}
-                        className={`flex items-center border-y border-gray-300 w-full py-5 space-x-1 ps-2 cursor-pointer hover:border-blue-500 ${selected===nome?'bg-slate-200 rounded-e-4xl text-blue-600':null}`}
+                        className={`flex text-[0.8vw] items-center border-y border-gray-300 w-full py-5 space-x-1 ps-2 cursor-pointer hover:border-blue-500 ${selected===nome?'bg-slate-200 rounded-e-4xl text-blue-600':null}`}
                         onClick={() => handleChangeEmployeer(nome)}
                         >
                         <div>
-                            <FaClipboardUser className="size-12 text-black" />
+                            <FaClipboardUser className="size-[2.5vw] text-black" />
                         </div>
                         <div className="font-semibold">
                             <p className="font-semibold">{nome}</p>

@@ -27,14 +27,14 @@ export default function App(){
               <Resume/>
               <div className="flex flex-col items-center justify-center h-3/10 space-y-10">
                 <div className="flex items-center space-x-2 justify-center">
-                  <p className="text-2xl font-bold">Ferramenta de geração de relatórios</p>
+                  <p className="text-[2vh] font-bold">Ferramenta de geração de relatórios</p>
                   <FaTools size={30}/>
                 </div>
-                <button className="p-3 w-8/12 shadow-md bg-green-500 rounded-lg font-semibold text-lg uppercase">Gerar relatório do Funcionário</button>
+                <button className="p-3 w-8/12 shadow-md bg-green-500 rounded-lg font-semibold text-[1.5vh] uppercase opacity-55">Gerar relatório do Funcionário</button>
               </div>
             </div>
             <div className="pt-10 w-5/12 space-y-2 h-full">
-              <p className="font-bold text-[3vh] ps-5">Detalhes do funcionário</p>
+              <p className="font-bold text-[3vh] ps-5 text-nowrap">Detalhes do funcionário</p>
                 <Funcdetails/>
             </div>
           </div>
