@@ -24,7 +24,7 @@ export const fetchUpload = createAsyncThunk("upload/fetch", async (file:File, {g
 // 🔹 Criando o Slice do Redux
 const analiseResumeSlice = createSlice({
   name: "analiseResume",
-  initialState: { processed:false, AnalisedEmployeersNumber:0, BaseEmployeersNumber:0, newest:0, out:0, inconsistencies:0, difValor:0, loading:false, error:false },
+  initialState: { processed:false, AnalisedEmployeersNumber:0, BaseEmployeersNumber:0, newest:0, out:0, inconsistencies:0, difValor:0, BruteBase:0, BruteAnalised:0, BruteDiff:0, loading:false, error:false },
   reducers: {
     restartState:(state)=>{
         state.processed = false;
@@ -45,6 +45,9 @@ const analiseResumeSlice = createSlice({
             state.out = action.payload['saida']
             state.inconsistencies = action.payload['inconsistencias']
             state.difValor = action.payload['total_diferença']
+            state.BruteBase = action.payload['bruto_base']
+            state.BruteAnalised = action.payload['bruto_analisado']
+            state.BruteDiff = action.payload['bruto_diferenca']
         })
         .addCase(fetchUpload.rejected, (state)=>{
             state.loading = false;
